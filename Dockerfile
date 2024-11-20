@@ -1,21 +1,23 @@
 ARG DEBIAN_FRONTEND=noninteractive
-ARG BASE_DIST=ubuntu20.04
-ARG CUDA_VERSION=11.4.3
-FROM nvidia/cuda:${CUDA_VERSION}-base-${BASE_DIST}
+FROM ubuntu:20.04
 
 # installations
 RUN apt-get update && \
-    apt-get install -y vulkan-tools mesa-utils pciutils && \
+    apt-get install -y \
+    vulkan-tools \
+    mesa-utils \
+    pciutils \
+    x11-xserver-utils \
+    libvulkan1 \
+    mesa-vulkan-drivers \
+    intel-gpu-tools && \
     rm -rf /var/lib/apt/lists/*
 
-# env var for display
+# env var for X11 display
 ENV DISPLAY=:0
 
-# mount X11 socket and give access to GPU
+# mount X11 socket
 RUN mkdir -p /tmp/.X11-unix
 
-# runs test Vulkan application
+# run
 CMD ["vkcube"]
-
-# this doesn't work
-# CMD ["sh", "-c", "nvidia-smi && lspci | grep ' VGA ' && vulkaninfo --summary && vkcube"]
