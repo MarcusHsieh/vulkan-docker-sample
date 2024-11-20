@@ -11,8 +11,8 @@ This guide explains how to run Vulkan applications in a Docker container with di
 - [Results](#results)
 
 ## Prerequisites
-- Docker with GPU support enabled.
-- For Windows: [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+- Docker with GPU support enabled (If not, use the noGPU branch)
+- For Windows: [VcXsrv](https://sourceforge.net/projects/vcxsrv/) and install WSL (```wsl --install```).
 - For Linux: No additional X11 server is needed as X11 forwarding is native to Linux.
 
 ---

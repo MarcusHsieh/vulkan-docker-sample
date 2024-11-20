@@ -5,7 +5,7 @@ FROM nvidia/cuda:${CUDA_VERSION}-base-${BASE_DIST}
 
 # installations
 RUN apt-get update && \
-    apt-get install -y vulkan-tools mesa-utils pciutils && \
+    apt-get install -y vulkan-tools mesa-utils pciutils x11-xserver-utils && \
     rm -rf /var/lib/apt/lists/*
 
 # env var for display
