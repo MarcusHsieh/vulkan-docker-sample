@@ -38,7 +38,7 @@ Run the following command to build the Docker image:
 ```bash
 docker build -t vulkan-docker-test .
 ```
-##### Run the Docker Container
+##### Run the Docker Container (Launch Ubuntu WSL)
 Use the following command to run the container, allowing it to display via VcXsrv:
 ```bash
 xhost +local:docker && docker run --rm -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all vulkan-docker-test
